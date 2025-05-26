@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DreamAgent.ca - Web Application
+
+This is the Next.js application for DreamAgent.ca, a real estate microsite generator.
 
 ## Getting Started
 
