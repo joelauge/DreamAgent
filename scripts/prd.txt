@@ -1,0 +1,183 @@
+**Project Name:** DreamAgent.ca
+**Platform:** Mobile-First Web (Built in Cursor)
+**Type:** Real Estate Microsite Generator
+**Target Audience:** Realtors in Canada
+**Core Value Proposition:** Generate SEO-optimized microsites for top realtors in the top 100 Canadian cities with lead capture and "claim this page" functionality.
+
+We will use Vercel, Next.js, and Supabase for DB and Storage and Clerk.com for user management and authentication.
+
+---
+
+## 🎯 Product Vision
+
+Build a mobile-first, SEO-dominant microsite generator to connect high-intent real estate leads with the top 10 realtors in each of Canada's 100 most populated cities. Each microsite will be optimized for rapid Google indexing and user conversion, with an optional "claim this page" flow for realtors.
+
+---
+
+## 🔎 Core Features
+
+### 1. Microsite Generation Engine
+
+* Automatically create 1,000+ pre-built microsites
+* Microsite includes:
+
+  * Realtor name, image, and title
+  * Geo-tagged city branding and background
+  * Testimonials, featured listings, market stats
+  * Interactive map (Google Maps / Mapbox)
+  * Sticky contact CTA form
+
+### 2. "Claim This Page" System
+
+* Prominent CTA: "🏆 Claim This Page"
+* Auth flow:
+
+  * Email input or phone auth
+  * Validate against CREA / Realtor.ca API
+  * Optional admin verification
+* Claimed users can:
+
+  * Edit bio, images, testimonials, listings
+  * View dashboard metrics
+  * Upgrade to premium features
+
+### 3. City-Specific SEO Pages
+
+* URLs like `/best-realtor/oakville`, `/top-realtor/vancouver/john-smith`
+* On-page:
+
+  * H1 with city keyword
+  * Local FAQs, neighborhood guides
+  * Auto-refreshed market trends via API
+
+### 4. Lead Capture
+
+* Form fields: name, email, phone, message
+* Direct CRM integration (Zapier, Make.com)
+* Email/SMS notifications
+
+### 5. Realtor Dashboard
+
+* Secure login
+* Dashboard with:
+
+  * Microsite analytics
+  * Editable profile content
+  * AI-assisted blog generation
+  * SEO audit tools
+
+### 6. AI Content Generation
+
+* GPT-4 generated:
+
+  * Realtor bios
+  * Neighborhood descriptions
+  * Blog posts
+  * SEO FAQs
+* Admin approval workflow
+
+---
+
+## 🖌 UX/UI Requirements
+
+### Design System
+
+* Mobile-first responsive design
+* Tailwind CSS with design tokens for:
+
+  * Realtor Cards
+  * CTA Buttons
+  * Sticky Headers
+  * Accordions and FAQs
+
+### Visual Style
+
+* Trust-centric: navy, slate, light beige
+* Typography: Inter or Lato
+* Animations: Subtle fade-ins, smooth scrolling
+
+### UX Goals
+
+* Load-to-lead in < 10 seconds
+* 3-tap navigation to contact form
+* Sticky bottom CTA on mobile
+* Minimalist page layout to reduce bounce
+
+---
+
+## ⚖️ Technical Architecture
+
+### Frontend
+
+* React + TailwindCSS (via Cursor)
+* SSR with Next.js or Astro
+* Mobile-first media queries + progressive enhancement
+
+### Backend
+
+* Supabase or Firebase (Auth, DB, Storage)
+* API layer for:
+
+  * CREA / Realtor.ca validation
+  * OpenAI GPT-4 integration
+  * Blog generator queue
+
+### Hosting & Infrastructure
+
+* Vercel + Edge Functions
+* Cloudflare for DNS + SSL
+* Analytics: Plausible or GA4
+
+---
+
+## 📊 SEO Strategy
+
+### Content Structure
+
+* Title, Meta, H1 with location + profession keyword
+* Structured FAQs (JSON-LD)
+* Dynamic OG tags for sharing
+
+### Schema
+
+* LocalBusiness + Realtor schema
+* Review + FAQ schema
+
+### Ranking Tactics
+
+* Internal links between cities
+* Geo-tagged images + maps
+* City-specific blog content
+* XML sitemap per city
+
+---
+
+## 📊 Analytics & Metrics
+
+* Traffic (per microsite)
+* Lead form submissions
+* Time on page
+* Scroll depth
+* CTR from "Claim this page"
+
+---
+
+## 📚 Roadmap
+
+| Phase   | Timeline  | Deliverables                            |
+| ------- | --------- | --------------------------------------- |
+| Phase 1 | Week 1-2  | Mobile-first UX mockups in Cursor       |
+| Phase 2 | Week 3-4  | MVP Generator + 10 city test deployment |
+| Phase 3 | Week 5-6  | Claim system + dashboard setup          |
+| Phase 4 | Week 7-8  | AI blog + lead capture integration      |
+| Phase 5 | Week 9-10 | Full-scale SEO launch + analytics       |
+
+---
+
+## 🚀 Future Features
+
+* Realtor-tier subscriptions
+* Paid SEO boost packages
+* US expansion
+* In-page chatbots for live responses
+* Neighborhood micro-microsites 
