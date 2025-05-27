@@ -26,8 +26,8 @@ export default function Home() {
     certifications: ['Certified Residential Specialist', 'Accredited Buyer Representative'],
     brokerageName: 'Premier Realty Group',
     brokerageAddress: 'Toronto, ON',
-    // Using a free static map service that shows actual Toronto map
-    cityMapImageUrl: 'https://staticmap.openstreetmap.de/staticmap.php?center=43.6532,-79.3832&zoom=11&size=1920x1080&maptype=mapnik',
+    // Using Google Maps Static API with custom styling for a clean, professional look
+    cityMapImageUrl: 'https://maps.googleapis.com/maps/api/staticmap?center=Toronto,ON,Canada&zoom=11&size=1920x1080&maptype=roadmap&style=feature:administrative|element:labels|visibility:on&style=feature:administrative.country|element:geometry.stroke|color:0x000000|weight:1&style=feature:administrative.province|element:geometry.stroke|color:0x000000|weight:1&style=feature:landscape|element:all|saturation:-100|lightness:65&style=feature:poi|element:all|saturation:-100|lightness:50&style=feature:road|element:all|saturation:-100&style=feature:road.highway|element:geometry|color:0x5f5f5f&style=feature:road.arterial|element:geometry|color:0x929292&style=feature:road.local|element:geometry|color:0xcccccc&style=feature:transit|element:all|saturation:-100&style=feature:water|element:geometry|color:0x2d5f8e&key=AIzaSyA1iNkcELiu2Nvndj0jVyTaAUtbTXBTbBw',
   };
 
   const featuredListings = [
