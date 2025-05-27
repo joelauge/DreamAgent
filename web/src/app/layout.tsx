@@ -9,6 +9,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,8 +29,8 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={inter.variable}>
-        <body>
+      <html lang="en" className={`${inter.variable} h-full`}>
+        <body className="flex flex-col h-full">
           <header
             style={{
               display: 'flex',
@@ -37,6 +38,7 @@ export default function RootLayout({
               padding: '1rem',
               borderBottom: '1px solid #eee',
               backgroundColor: '#f8f9fa',
+              flexShrink: 0,
             }}
           >
             <div style={{ fontWeight: 'bold', fontSize: '1.25rem' }}>
@@ -55,7 +57,9 @@ export default function RootLayout({
 
           <Header realtorName="Sample Realtor" cityName="Sample City" />
 
-          <main style={{ padding: '1rem' }}>{children}</main>
+          <main className="flex-grow" style={{ padding: '1rem' }}>{children}</main>
+
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
