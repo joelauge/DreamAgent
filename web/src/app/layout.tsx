@@ -8,6 +8,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import Header from "@/components/layout/Header";
 import "./globals.css";
 
 const inter = Inter({
@@ -29,19 +30,32 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={inter.variable}>
         <body>
-          <header style={{ display: 'flex', justifyContent: 'space-between', padding: '20px', borderBottom: '1px solid #eee' }}>
-            <div style={{ fontWeight: 'bold' }}>DreamAgent.ca</div>
+          <header
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '1rem',
+              borderBottom: '1px solid #eee',
+              backgroundColor: '#f8f9fa',
+            }}
+          >
+            <div style={{ fontWeight: 'bold', fontSize: '1.25rem' }}>
+              {/* Placeholder for main site logo if needed, or remove if Clerk is the only global nav */}
+            </div>
             <div>
               <SignedOut>
                 <SignInButton />
                 <SignUpButton />
               </SignedOut>
               <SignedIn>
-                <UserButton />
+                <UserButton afterSignOutUrl="/" />
               </SignedIn>
             </div>
           </header>
-          <main style={{ padding: '20px' }}>{children}</main>
+
+          <Header realtorName="Sample Realtor" cityName="Sample City" />
+
+          <main style={{ padding: '1rem' }}>{children}</main>
         </body>
       </html>
     </ClerkProvider>
