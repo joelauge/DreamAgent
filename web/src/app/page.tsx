@@ -2,6 +2,7 @@ import Hero from '@/components/sections/Hero';
 import AboutSection from '@/components/sections/AboutSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import FeaturedListingsSection from '@/components/sections/FeaturedListingsSection';
+import MarketStatsSection from '@/components/sections/MarketStatsSection';
 
 export default function HomePage() {
   // Sample data for the Hero component
@@ -76,6 +77,12 @@ export default function HomePage() {
         sqFt: 1950,
         detailsUrl: '#listing-L3'
       }
+    ],
+    // Sample Market Stats Data
+    marketStats: [
+      { label: 'Average Home Price', value: '$950,000', trend: 'up' as const },
+      { label: 'Homes Sold (Last 30 Days)', value: 120, trend: 'neutral' as const },
+      { label: 'Average Days on Market', value: '28 Days', trend: 'down' as const },
     ]
   };
 
@@ -101,6 +108,7 @@ export default function HomePage() {
       />
       <TestimonialsSection testimonials={realtorData.testimonials} />
       <FeaturedListingsSection listings={realtorData.featuredListings} />
+      <MarketStatsSection cityName={realtorData.cityName} stats={realtorData.marketStats} />
       {/* Other page sections will go here */}
       <div className="container mx-auto p-8">
         <h2 className="text-2xl font-bold mb-4 text-brand-navy">Further Page Content</h2>
