@@ -29,8 +29,8 @@ const Hero: React.FC<HeroProps> = ({
   realtorProfileImageUrl = 'https://via.placeholder.com/150', // Default placeholder
   cityName,
   province,
-  headline,
-  subheadline,
+  headline: passedHeadline,
+  subheadline: passedSubheadline,
   ctaText1 = 'View Listings',
   ctaLink1 = '#listings',
   ctaText2 = 'Contact Me',
@@ -38,8 +38,10 @@ const Hero: React.FC<HeroProps> = ({
   cityMapImageUrl, // Destructure new prop
 }) => {
   const { isMobile, isTablet } = useBreakpoint();
-  const defaultHeadline = `Your Trusted ${cityName} Real Estate Expert`;
-  const defaultSubheadline = `Discover your dream home with ${realtorName}.`;
+  
+  // Use passed in headline/subheadline if available, otherwise generate defaults
+  const headline = passedHeadline || `Find Your Dream Home in ${cityName} with ${realtorName}`;
+  const subheadline = passedSubheadline || `Your trusted partner for navigating the ${cityName}, ${province} real estate market. Explore exclusive listings and expert guidance.`;
 
   return (
     <section className="relative bg-brand-beige text-brand-navy py-20 md:py-32 min-h-[70vh] flex items-center">
@@ -64,7 +66,7 @@ const Hero: React.FC<HeroProps> = ({
             delay={200}
             className="inline-block mb-8"
           >
-            <div className="bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300 p-6 sm:p-8">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300 p-6 sm:p-8">
               {/* Realtor Profile Image */}
               {realtorProfileImageUrl && (
                 <div className="mb-6 mx-auto w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
@@ -84,30 +86,28 @@ const Hero: React.FC<HeroProps> = ({
                 <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2">
                   {realtorName}
                 </h1>
-                <p className="text-gray-600 text-sm sm:text-base">
+                <p className="text-gray-700 text-sm sm:text-base">
                   {realtorTitle} in {cityName}
                 </p>
               </div>
             </div>
           </AnimatedContainer>
 
-          {/* Main Headline */}
+          {/* Main Headline & Subheadline - Now white with drop shadows for contrast */}
           <AnimatedContainer 
             animation="slide-up" 
             delay={400}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto leading-tight">
-              {headline || defaultHeadline}
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white drop-shadow-lg mb-6 max-w-4xl mx-auto leading-tight">
+              {headline}
             </h2>
           </AnimatedContainer>
-
-          {/* Subheadline */}
           <AnimatedContainer 
             animation="slide-up" 
             delay={600}
           >
-            <p className="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-              {subheadline || defaultSubheadline}
+            <p className="text-lg sm:text-xl text-gray-100 drop-shadow-md mb-10 max-w-2xl mx-auto leading-relaxed">
+              {subheadline}
             </p>
           </AnimatedContainer>
 
@@ -129,7 +129,7 @@ const Hero: React.FC<HeroProps> = ({
             <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-navy">
               <a
                 href={ctaLink2}
-                className="w-full sm:w-auto px-8 py-4 bg-white text-gray-900 font-medium rounded-xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-gray-300 transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                className="w-full sm:w-auto px-8 py-4 bg-white/80 backdrop-blur-sm text-brand-navy font-medium rounded-xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-gray-300 hover:bg-white transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
               >
                 {ctaText2}
               </a>

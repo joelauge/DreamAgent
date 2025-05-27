@@ -15,7 +15,7 @@ export default function Home() {
     email: 'sarah.johnson@dreamagent.ca',
     phone: '(416) 555-0123',
     // Using picsum.photos for more reliable placeholder images
-    realtorProfileImageUrl: 'https://picsum.photos/160/160?random=1', // Placeholder image
+    realtorProfileImageUrl: 'https://picsum.photos/seed/sarahjohnson/200/200',
     cityName: 'Toronto',
     province: 'ON',
     headline: 'Find Your Dream Home in Toronto',
@@ -26,7 +26,8 @@ export default function Home() {
     certifications: ['Certified Residential Specialist', 'Accredited Buyer Representative'],
     brokerageName: 'Premier Realty Group',
     brokerageAddress: 'Toronto, ON',
-    cityMapImageUrl: 'https://picsum.photos/seed/torontomap/1920/1080', // Sample map image
+    // Using a free static map service that shows actual Toronto map
+    cityMapImageUrl: 'https://staticmap.openstreetmap.de/staticmap.php?center=43.6532,-79.3832&zoom=11&size=1920x1080&maptype=mapnik',
   };
 
   const featuredListings = [
