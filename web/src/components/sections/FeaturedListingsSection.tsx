@@ -22,48 +22,81 @@ const FeaturedListingsSection: React.FC<FeaturedListingsSectionProps> = ({ listi
   }
 
   return (
-    <section id="listings" className="py-12 sm:py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-brand-navy mb-10 text-center">
-          Featured Listings
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section className="py-16 sm:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Featured Properties
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover exceptional homes in prime locations
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {listings.map((listing) => (
             <div 
               key={listing.id} 
-              className="bg-white rounded-lg shadow-xl overflow-hidden border border-brand-slate/20 flex flex-col transform hover:shadow-2xl transition-shadow duration-300 ease-in-out"
+              className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 cursor-pointer"
             >
-              <div className="relative w-full h-56 sm:h-64">
+              {/* Image Container */}
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <Image 
                   src={listing.imageUrl}
-                  alt={`View of ${listing.address}`}
+                  alt={`Property at ${listing.address}`}
                   fill
-                  style={{ objectFit: 'cover' }} // Equivalent to object-cover
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
+                {/* Price Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-white/90 backdrop-blur-sm text-gray-900 font-semibold px-3 py-1 rounded-full text-sm shadow-lg">
+                    {listing.price}
+                  </span>
+                </div>
               </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold text-brand-navy mb-2">{listing.address}</h3>
-                <p className="text-2xl font-bold text-brand-navy mb-3">{listing.price}</p>
-                <div className="flex items-center text-brand-slate space-x-4 mb-4 text-sm">
-                  <span>{listing.beds} Beds</span>
-                  <span>|</span>
-                  <span>{listing.baths} Baths</span>
+              
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-rose-500 transition-colors">
+                  {listing.address}
+                </h3>
+                
+                {/* Property Details */}
+                <div className="flex items-center text-gray-600 text-sm mb-4 space-x-4">
+                  <span className="flex items-center">
+                    <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 21v-4a2 2 0 012-2h4a2 2 0 012 2v4" />
+                    </svg>
+                    {listing.beds} beds
+                  </span>
+                  <span className="flex items-center">
+                    <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11" />
+                    </svg>
+                    {listing.baths} baths
+                  </span>
                   {listing.sqFt && (
-                    <>
-                      <span>|</span>
-                      <span>{listing.sqFt.toLocaleString()} SqFt</span>
-                    </>
+                    <span className="flex items-center">
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                      </svg>
+                      {listing.sqFt.toLocaleString()} sq ft
+                    </span>
                   )}
                 </div>
-                <div className="mt-auto">
-                  <a 
-                    href={listing.detailsUrl}
-                    className="inline-block w-full text-center px-6 py-3 bg-brand-navy text-white font-semibold rounded-md shadow-md hover:bg-brand-navy/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-beige focus:ring-opacity-50"
-                  >
-                    View Details
-                  </a>
-                </div>
+                
+                {/* View Details Link */}
+                <a 
+                  href={listing.detailsUrl}
+                  className="inline-flex items-center text-rose-500 font-medium hover:text-rose-600 transition-colors"
+                >
+                  View Details
+                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
               </div>
             </div>
           ))}
