@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Placeholder for social media icons if you use a library like react-icons
 // import { IconType } from 'react-icons';
@@ -35,8 +36,14 @@ const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand/Contact */}
           <div className="lg:col-span-2">
-            <Link href="/" className="text-xl font-semibold text-gray-900 hover:text-rose-500 transition-colors">
-              DreamAgent.ca
+            <Link href="/" className="inline-block hover:opacity-80 transition-opacity">
+              <Image
+                src="/dreamagent_logo_wide_b.png"
+                alt="DreamAgent.ca"
+                width={180}
+                height={45}
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="text-gray-600 mt-3 max-w-md">
               Your trusted partner in finding the perfect home. Professional real estate services with a personal touch.

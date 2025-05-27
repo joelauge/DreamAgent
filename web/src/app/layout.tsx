@@ -42,7 +42,7 @@ export default function RootLayout({
           />
           
           {/* Clerk Auth UI - temporary for development */}
-          <div className="fixed top-4 right-4 z-50 bg-white/90 backdrop-blur-sm rounded-lg p-2 shadow-lg">
+          <div className="fixed top-20 right-4 z-50 bg-white/90 backdrop-blur-sm rounded-lg p-2 shadow-lg">
             <SignedOut>
               <SignInButton mode="modal">
                 <button className="text-sm px-3 py-1 bg-rose-500 text-white rounded hover:bg-rose-600 transition-colors">

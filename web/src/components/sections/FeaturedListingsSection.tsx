@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import { AnimatedContainer, ResponsiveGrid, LazyImage } from '@/components/ui';
 
 interface Listing {
   id: string | number;
@@ -24,24 +24,30 @@ const FeaturedListingsSection: React.FC<FeaturedListingsSectionProps> = ({ listi
   return (
     <section className="py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <AnimatedContainer animation="slide-up" className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Featured Properties
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover exceptional homes in prime locations
           </p>
-        </div>
+        </AnimatedContainer>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {listings.map((listing) => (
-            <div 
-              key={listing.id} 
-              className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 cursor-pointer"
+        <ResponsiveGrid 
+          cols={{ sm: 1, md: 2, lg: 3 }} 
+          gap="lg"
+        >
+          {listings.map((listing, index) => (
+            <AnimatedContainer
+              key={listing.id}
+              animation="slide-up"
+              delay={index * 100}
             >
+              <div className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 cursor-pointer"
+              >
               {/* Image Container */}
               <div className="relative aspect-[4/3] overflow-hidden">
-                <Image 
+                <LazyImage 
                   src={listing.imageUrl}
                   alt={`Property at ${listing.address}`}
                   fill
@@ -98,9 +104,10 @@ const FeaturedListingsSection: React.FC<FeaturedListingsSectionProps> = ({ listi
                   </svg>
                 </a>
               </div>
-            </div>
+              </div>
+            </AnimatedContainer>
           ))}
-        </div>
+        </ResponsiveGrid>
       </div>
     </section>
   );

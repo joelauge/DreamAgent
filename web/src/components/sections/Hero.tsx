@@ -1,60 +1,81 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image'; // For realtor profile image
+import { AnimatedContainer } from '@/components/ui/AnimatedContainer';
+import { useBreakpoint } from '@/hooks/useBreakpoint';
+import { Button } from '@/components/ui/Button';
+import { ChevronRight } from 'lucide-react';
+import { LazyImage } from '@/components/ui/LazyImage'; // Added LazyImage import
 
 interface HeroProps {
   realtorName: string;
   realtorTitle?: string; // e.g., "Real Estate Agent", "Broker"
-  realtorImageUrl?: string; // URL for realtor's profile picture
+  realtorProfileImageUrl?: string;
   cityName: string;
+  province: string;
   headline?: string;
   subheadline?: string;
   ctaText1?: string;
   ctaLink1?: string;
   ctaText2?: string;
   ctaLink2?: string;
-  // Background will eventually be a dynamic map image
+  cityMapImageUrl?: string; // Added cityMapImageUrl prop
 }
 
 const Hero: React.FC<HeroProps> = ({
   realtorName,
   realtorTitle = 'Real Estate Professional',
-  realtorImageUrl,
+  realtorProfileImageUrl = 'https://via.placeholder.com/150', // Default placeholder
   cityName,
+  province,
   headline,
   subheadline,
-  ctaText1 = 'Contact Me',
-  ctaLink1 = '#contact', // Link to contact form section
-  ctaText2,
-  ctaLink2,
+  ctaText1 = 'View Listings',
+  ctaLink1 = '#listings',
+  ctaText2 = 'Contact Me',
+  ctaLink2 = '#contact',
+  cityMapImageUrl, // Destructure new prop
 }) => {
+  const { isMobile, isTablet } = useBreakpoint();
   const defaultHeadline = `Your Trusted ${cityName} Real Estate Expert`;
   const defaultSubheadline = `Discover your dream home with ${realtorName}.`;
 
   return (
-    <section className="relative bg-gray-50 py-16 sm:py-24">
-      {/* Background - Placeholder for dynamic map image */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100"></div>
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+    <section className="relative bg-brand-beige text-brand-navy py-20 md:py-32 min-h-[70vh] flex items-center">
+      {cityMapImageUrl && (
+        <LazyImage
+          src={cityMapImageUrl}
+          alt={`${cityName}, ${province} map background`}
+          fill
+          className="absolute inset-0 z-0 object-cover" // Added object-cover
+          quality={80}
+          priority // Prioritize loading for hero background
+        />
+      )}
+      {/* Overlay for better text readability on background image */}
+      <div className="absolute inset-0 bg-black/50 z-0"></div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-3xl mx-auto">
           {/* Realtor Profile Card */}
-          <div className="inline-block mb-8">
-            <div className="bg-white rounded-2xl shadow-card p-6 sm:p-8">
+          <AnimatedContainer 
+            animation="scale-in" 
+            delay={200}
+            className="inline-block mb-8"
+          >
+            <div className="bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300 p-6 sm:p-8">
               {/* Realtor Profile Image */}
-              {realtorImageUrl ? (
+              {realtorProfileImageUrl && (
                 <div className="mb-6 mx-auto w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
                   <Image 
-                    src={realtorImageUrl}
+                    src={realtorProfileImageUrl}
                     alt={`${realtorName}, ${realtorTitle}`}
                     width={128} 
                     height={128}
                     className="object-cover w-full h-full"
                     priority // Hero image, prioritize loading
                   />
-                </div>
-              ) : (
-                <div className="mb-6 mx-auto w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gray-200 flex items-center justify-center border-4 border-white shadow-lg">
-                  <span className="text-2xl sm:text-3xl text-gray-600 font-medium">{realtorName.charAt(0)}</span>
                 </div>
               )}
 
@@ -68,37 +89,52 @@ const Hero: React.FC<HeroProps> = ({
                 </p>
               </div>
             </div>
-          </div>
+          </AnimatedContainer>
 
           {/* Main Headline */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto leading-tight">
-            {headline || defaultHeadline}
-          </h2>
+          <AnimatedContainer 
+            animation="slide-up" 
+            delay={400}
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto leading-tight">
+              {headline || defaultHeadline}
+            </h2>
+          </AnimatedContainer>
 
           {/* Subheadline */}
-          <p className="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-            {subheadline || defaultSubheadline}
-          </p>
+          <AnimatedContainer 
+            animation="slide-up" 
+            delay={600}
+          >
+            <p className="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+              {subheadline || defaultSubheadline}
+            </p>
+          </AnimatedContainer>
 
           {/* Call to Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            {ctaText1 && ctaLink1 && (
+          <AnimatedContainer 
+            animation="slide-up" 
+            delay={800}
+            className="flex flex-col sm:flex-row justify-center items-center gap-4"
+          >
+            <Button asChild size="lg" className="bg-rose-500 hover:bg-rose-600 text-white">
               <a
                 href={ctaLink1}
                 className="w-full sm:w-auto px-8 py-4 bg-rose-500 text-white font-medium rounded-xl shadow-lg hover:bg-rose-600 hover:shadow-xl transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
               >
                 {ctaText1}
+                <ChevronRight className="ml-2 h-5 w-5" />
               </a>
-            )}
-            {ctaText2 && ctaLink2 && (
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-navy">
               <a
                 href={ctaLink2}
                 className="w-full sm:w-auto px-8 py-4 bg-white text-gray-900 font-medium rounded-xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-gray-300 transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
               >
                 {ctaText2}
               </a>
-            )}
-          </div>
+            </Button>
+          </AnimatedContainer>
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@ import AboutSection from '@/components/sections/AboutSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import FeaturedListingsSection from '@/components/sections/FeaturedListingsSection';
 import MarketStatsSection from '@/components/sections/MarketStatsSection';
+import MapSection from '@/components/sections/MapSection';
 import ContactFormSection from '@/components/sections/ContactFormSection';
 import FAQSection from '@/components/sections/FAQSection';
 
@@ -13,9 +14,10 @@ export default function Home() {
     title: 'Senior Real Estate Agent',
     email: 'sarah.johnson@dreamagent.ca',
     phone: '(416) 555-0123',
-    // e.g., from Pexels, Unsplash, or a placeholder service like Pngtree, Placeholder.com
-    realtorImageUrl: 'https://placehold.co/160', // Placeholder image
+    // Using picsum.photos for more reliable placeholder images
+    realtorProfileImageUrl: 'https://picsum.photos/160/160?random=1', // Placeholder image
     cityName: 'Toronto',
+    province: 'ON',
     headline: 'Find Your Dream Home in Toronto',
     subheadline: 'Expert guidance through every step of your real estate journey',
     aboutText: 'With over 8 years of experience in the Toronto real estate market, Sarah Johnson has helped hundreds of families find their perfect home. Her deep knowledge of local neighborhoods, market trends, and negotiation expertise ensures her clients get the best possible outcomes.',
@@ -23,13 +25,14 @@ export default function Home() {
     specialties: ['First-time home buyers', 'Luxury properties', 'Investment properties'],
     certifications: ['Certified Residential Specialist', 'Accredited Buyer Representative'],
     brokerageName: 'Premier Realty Group',
-    brokerageAddress: 'Toronto, ON'
+    brokerageAddress: 'Toronto, ON',
+    cityMapImageUrl: 'https://picsum.photos/seed/torontomap/1920/1080', // Sample map image
   };
 
   const featuredListings = [
     {
       id: 'L1',
-      imageUrl: 'https://placehold.co/400x300/ddeeff/001f3f?text=Modern+Downtown+Apartment', // Placeholder
+      imageUrl: 'https://picsum.photos/400/300?random=10', // Modern apartment placeholder
       address: '123 King Street West, Toronto',
       price: '$1,250,000',
       beds: 2,
@@ -39,7 +42,7 @@ export default function Home() {
     },
     {
       id: 'L2',
-      imageUrl: 'https://placehold.co/400x300/eefdde/001f3f?text=Cozy+Suburban+House', // Placeholder
+      imageUrl: 'https://picsum.photos/400/300?random=11', // Suburban house placeholder
       address: '456 Maple Avenue, North York',
       price: '$950,000',
       beds: 3,
@@ -49,7 +52,7 @@ export default function Home() {
     },
     {
       id: 'L3',
-      imageUrl: 'https://placehold.co/400x300/ffeedd/001f3f?text=Luxury+Riverside+Condo', // Placeholder
+      imageUrl: 'https://picsum.photos/400/300?random=12', // Luxury condo placeholder
       address: '789 Harbourfront Drive, Toronto',
       price: '$2,100,000',
       beds: 3,
@@ -135,14 +138,16 @@ export default function Home() {
       <Hero
         realtorName={realtorData.name}
         realtorTitle={realtorData.title}
-        realtorImageUrl={realtorData.realtorImageUrl}
+        realtorProfileImageUrl={realtorData.realtorProfileImageUrl}
         cityName={realtorData.cityName}
+        province={realtorData.province}
         headline={realtorData.headline}
         subheadline={realtorData.subheadline}
         ctaText1="Contact Me"
         ctaLink1="#contact"
         ctaText2="View Properties"
         ctaLink2="#listings"
+        cityMapImageUrl={realtorData.cityMapImageUrl}
       />
       
       <AboutSection
@@ -158,6 +163,8 @@ export default function Home() {
       <TestimonialsSection testimonials={testimonials} />
       
       <MarketStatsSection cityName={realtorData.cityName} stats={marketStats} />
+      
+      <MapSection cityName={realtorData.cityName} />
       
       <FAQSection faqs={faqs} />
       

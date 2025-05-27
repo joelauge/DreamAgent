@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface HeaderProps {
   realtorName?: string;
@@ -14,8 +15,15 @@ const Header: React.FC<HeaderProps> = ({ realtorName, cityName }) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo / Site Name */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-semibold text-gray-900 hover:text-rose-500 transition-colors">
-              DreamAgent.ca
+            <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <Image
+                src="/dreamagent_logo_wide_b.png"
+                alt="DreamAgent.ca"
+                width={160}
+                height={40}
+                className="h-8 w-auto"
+                priority
+              />
             </Link>
           </div>
 
