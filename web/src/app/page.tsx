@@ -3,6 +3,8 @@ import AboutSection from '@/components/sections/AboutSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import FeaturedListingsSection from '@/components/sections/FeaturedListingsSection';
 import MarketStatsSection from '@/components/sections/MarketStatsSection';
+import ContactFormSection from '@/components/sections/ContactFormSection';
+import FAQSection from '@/components/sections/FAQSection';
 
 export default function HomePage() {
   // Sample data for the Hero component
@@ -83,6 +85,24 @@ export default function HomePage() {
       { label: 'Average Home Price', value: '$950,000', trend: 'up' as const },
       { label: 'Homes Sold (Last 30 Days)', value: 120, trend: 'neutral' as const },
       { label: 'Average Days on Market', value: '28 Days', trend: 'down' as const },
+    ],
+    // Sample FAQ Data
+    faqs: [
+      {
+        id: 'faq1',
+        question: "What areas in Metropolis do you specialize in?",
+        answer: "I specialize in all neighborhoods of Metropolis, including downtown, the suburbs, and waterfront properties. My extensive knowledge of the local market ensures you get the best advice, no matter where you're looking."
+      },
+      {
+        id: 'faq2',
+        question: "How long does the home buying process typically take?",
+        answer: "The home buying process can vary, but typically it takes anywhere from 30 to 60 days from the initial offer to closing. I will guide you through each step to make it as efficient as possible."
+      },
+      {
+        id: 'faq3',
+        question: "What should I do to prepare my home for sale?",
+        answer: "Preparing your home for sale involves several key steps, including decluttering, making minor repairs, and staging. I provide a comprehensive consultation to help you showcase your home in the best possible light to attract potential buyers."
+      }
     ]
   };
 
@@ -109,6 +129,8 @@ export default function HomePage() {
       <TestimonialsSection testimonials={realtorData.testimonials} />
       <FeaturedListingsSection listings={realtorData.featuredListings} />
       <MarketStatsSection cityName={realtorData.cityName} stats={realtorData.marketStats} />
+      <ContactFormSection realtorName={realtorData.realtorName} />
+      <FAQSection faqs={realtorData.faqs} />
       {/* Other page sections will go here */}
       <div className="container mx-auto p-8">
         <h2 className="text-2xl font-bold mb-4 text-brand-navy">Further Page Content</h2>
@@ -118,9 +140,6 @@ export default function HomePage() {
         </div>
         <div id="valuation" className="min-h-96 bg-gray-300 my-8 flex items-center justify-center p-4 rounded-lg shadow">
           <span className="text-xl text-gray-500">Valuation Section Placeholder</span>
-        </div>
-         <div id="contact" className="min-h-96 bg-gray-400 my-8 flex items-center justify-center p-4 rounded-lg shadow">
-          <span className="text-xl text-gray-500">Contact Section Placeholder</span>
         </div>
       </div>
     </main>
