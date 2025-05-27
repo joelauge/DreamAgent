@@ -11,6 +11,9 @@ node_modules/
 
 # Environment variables
 .env
+.env.*
+!.env.example
+!.env.template
 
 # Editor directories and files
 .idea
@@ -26,4 +29,17 @@ node_modules/
 
 # Task files
 tasks.json
-tasks/ 
+tasks/
+
+# Task Master generated files (if desired to ignore)
+# scripts/task-complexity-report.json
+
+# Next.js specific
+.next/
+out/
+
+# Web specific (if a sub-directory like 'web' exists)
+web/.env.local
+web/.env
+web/.next/
+web/out/ 
